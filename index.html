@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheeba - Excel & Web Freelance Expert | Mathura MBD</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0f0f0f;--cream:#faf8f4;--warm:#f4ede0;--gold:#b8860b;--goldlt:#e8c97a;--muted:#888;--white:#fff}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink)}
+
+nav{background:var(--ink);display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;position:sticky;top:0;z-index:99}
+.logo{font-family:'Cormorant Garamond',serif;color:var(--goldlt);font-size:1.6rem;letter-spacing:3px}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:#bbb;text-decoration:none;font-size:0.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.3s}
+.nav-links a:hover{color:var(--goldlt)}
+
+.hero{display:grid;grid-template-columns:1fr 340px;min-height:480px;background:var(--ink);overflow:hidden}
+.hero-left{padding:4rem 3rem;display:flex;flex-direction:column;justify-content:center}
+.badge{display:inline-block;background:rgba(184,134,11,0.15);border:1px solid rgba(184,134,11,0.4);color:var(--goldlt);font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;padding:0.4rem 1rem;margin-bottom:1.5rem;width:fit-content}
+.hero-left h1{font-family:'Cormorant Garamond',serif;font-size:3.8rem;color:white;line-height:1.05;margin-bottom:1.2rem}
+.hero-left h1 em{color:var(--goldlt);font-style:normal}
+.hero-left p{color:#999;font-size:0.95rem;line-height:1.9;max-width:420px;margin-bottom:2rem}
+.location-pill{display:flex;align-items:center;gap:0.5rem;color:#777;font-size:0.82rem;margin-bottom:2rem}
+.location-dot{width:7px;height:7px;background:var(--goldlt);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-gold{background:var(--gold);color:white;border:none;padding:0.85rem 2rem;font-family:'Outfit',sans-serif;font-size:0.85rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background 0.3s;text-decoration:none;display:inline-block}
+.btn-gold:hover{background:#9a7009}
+.btn-ghost{background:transparent;color:#bbb;border:1px solid rgba(255,255,255,0.2);padding:0.85rem 2rem;font-family:'Outfit',sans-serif;font-size:0.85rem;letter-spacing:1.5px;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
+.btn-ghost:hover{border-color:var(--goldlt);color:var(--goldlt)}
+
+.hero-right{background:linear-gradient(160deg,#1a1a1a,#0a0a0a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;padding:2rem;border-left:1px solid rgba(184,134,11,0.2)}
+.avatar{width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,#2a2215,#3d3020);border:2px solid var(--goldlt);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:3.5rem;color:var(--goldlt)}
+.available-badge{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:#4ade80;font-size:0.72rem;letter-spacing:2px;padding:0.35rem 1rem;display:flex;align-items:center;gap:0.5rem}
+.green-dot{width:6px;height:6px;background:#4ade80;border-radius:50%}
+.quick-stats{width:100%;display:flex;flex-direction:column;gap:0.6rem}
+.qs-item{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:0.7rem 1rem;display:flex;justify-content:space-between;align-items:center}
+.qs-label{font-size:0.75rem;color:#777;letter-spacing:1px}
+.qs-val{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--goldlt)}
+
+.ticker{background:var(--gold);padding:0.6rem 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-block;animation:tick 20s linear infinite;font-size:0.78rem;letter-spacing:2px;color:var(--ink);font-weight:500}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+section{padding:4rem 2.5rem}
+.sec-label{font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:2.5rem;color:var(--ink)}
+
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
+.svc{background:var(--white);border:1px solid #e8e2d6;padding:1.8rem 1.5rem;position:relative;transition:all 0.3s;cursor:default}
+.svc:hover{border-color:var(--gold);transform:translateY(-3px)}
+.svc-num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:#f0e8d8;font-weight:700;line-height:1;margin-bottom:0.5rem}
+.svc-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;margin-bottom:0.6rem;color:var(--ink)}
+.svc-desc{font-size:0.82rem;color:var(--muted);line-height:1.75;margin-bottom:1rem}
+.svc-price{font-size:0.75rem;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
+.svc-tag{position:absolute;top:1rem;right:1rem;background:var(--warm);color:#a07030;font-size:0.65rem;letter-spacing:1px;padding:0.25rem 0.6rem}
+
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2rem}
+.why-card{background:var(--ink);color:white;padding:1.5rem;text-align:center}
+.why-icon{font-size:1.5rem;margin-bottom:0.6rem}
+.why-title{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--goldlt);margin-bottom:0.4rem}
+.why-desc{font-size:0.78rem;color:#888;line-height:1.6}
+
+.skills-wrap{background:var(--warm);padding:4rem 2.5rem}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.sk{padding:1.2rem;background:var(--white);border:1px solid #e0d8c8}
+.sk-name{font-size:0.85rem;margin-bottom:0.5rem;color:var(--ink)}
+.sk-track{height:3px;background:#e8e2d6}
+.sk-fill{height:3px;background:var(--gold)}
+.sk-pct{font-size:0.7rem;color:var(--muted);margin-top:0.3rem;text-align:right}
+
+.process-wrap{background:var(--ink);padding:4rem 2.5rem}
+.process-wrap .sec-title{color:white}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(255,255,255,0.07)}
+.step{background:var(--ink);padding:2rem 1.5rem}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:rgba(184,134,11,0.25);font-weight:700;margin-bottom:0.5rem}
+.step-title{font-family:'Cormorant Garamond',serif;color:white;font-size:1rem;margin-bottom:0.4rem}
+.step-desc{font-size:0.78rem;color:#666;line-height:1.7}
+
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-left h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin-bottom:1.5rem;color:var(--ink)}
+.ci{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid #ece8df}
+.ci:last-child{border-bottom:none}
+.ci-icon{width:38px;height:38px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0}
+.ci-label{font-size:0.68rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:0.2rem}
+.ci-val{font-size:0.9rem;color:var(--ink);font-weight:500}
+
+.form-grid{display:flex;flex-direction:column;gap:0.8rem}
+.fi{padding:0.85rem 1rem;border:1px solid #ddd8ce;background:var(--warm);font-family:'Outfit',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.3s;width:100%}
+.fi:focus{border-color:var(--gold)}
+textarea.fi{min-height:110px;resize:vertical}
+.submit-btn{background:var(--ink);color:white;border:none;padding:0.9rem 2rem;font-family:'Outfit',sans-serif;font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.3s;align-self:flex-start}
+.submit-btn:hover{background:var(--gold)}
+
+.whatsapp-float{position:fixed;bottom:2rem;right:2rem;background:#25d366;color:white;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.4);z-index:999;transition:transform 0.3s}
+.whatsapp-float:hover{transform:scale(1.1)}
+
+footer{background:#080808;color:#555;text-align:center;padding:1.5rem;font-size:0.78rem;letter-spacing:2px}
+footer span{color:var(--goldlt)}
+
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:2.5rem 1.5rem}
+  .hero-left h1{font-size:2.5rem}
+  nav{padding:1rem 1.5rem}
+  .nav-links{gap:1rem}
+  section{padding:3rem 1.5rem}
+  .contact-wrap{grid-template-columns:1fr}
+  .skills-wrap{padding:3rem 1.5rem}
+  .process-wrap{padding:3rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Sheeba</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="badge">Freelance Expert — Available for Work</div>
+    <h1>Excel & Web<br><em>Solutions</em><br>by Sheeba</h1>
+    <div class="location-pill">
+      <div class="location-dot"></div>
+      Based in Mathura (MBD) · Serving clients across India
+    </div>
+    <p>I help businesses manage their data smartly with Excel dashboards and build a strong online presence with professional websites. Quality work, honest pricing, on-time delivery.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/918923092024" class="btn-gold">WhatsApp Me</a>
+      <a href="#services" class="btn-ghost">View Services</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="avatar">S</div>
+    <div class="available-badge"><div class="green-dot"></div> Available for Projects</div>
+    <div class="quick-stats">
+      <div class="qs-item"><span class="qs-label">Response Time</span><span class="qs-val">Within 24 hrs</span></div>
+      <div class="qs-item"><span class="qs-label">Excel Skills</span><span class="qs-val">Advanced</span></div>
+      <div class="qs-item"><span class="qs-label">Delivery</span><span class="qs-val">Always On Time</span></div>
+      <div class="qs-item"><span class="qs-label">Location</span><span class="qs-val">MBD, UP</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="ticker">
+  <span class="ticker-inner">
+    ✦ Excel Dashboards &nbsp;&nbsp; ✦ VLOOKUP & Pivot Tables &nbsp;&nbsp; ✦ Website Development &nbsp;&nbsp; ✦ MIS Reports &nbsp;&nbsp; ✦ Data Entry &nbsp;&nbsp; ✦ Business Landing Pages &nbsp;&nbsp; ✦ Data Analysis &nbsp;&nbsp; ✦ Excel Automation &nbsp;&nbsp;&nbsp;&nbsp;
+    ✦ Excel Dashboards &nbsp;&nbsp; ✦ VLOOKUP & Pivot Tables &nbsp;&nbsp; ✦ Website Development &nbsp;&nbsp; ✦ MIS Reports &nbsp;&nbsp; ✦ Data Entry &nbsp;&nbsp; ✦ Business Landing Pages &nbsp;&nbsp; ✦ Data Analysis &nbsp;&nbsp; ✦ Excel Automation &nbsp;&nbsp;
+  </span>
+</div>
+
+<section id="services">
+  <p class="sec-label">What I Offer</p>
+  <h2 class="sec-title">My Services</h2>
+  <div class="services-grid">
+    <div class="svc">
+      <div class="svc-num">01</div>
+      <div class="svc-tag">Most Popular</div>
+      <h3 class="svc-title">Excel & MIS Reports</h3>
+      <p class="svc-desc">Professional dashboards, VLOOKUP, Pivot Tables, automated MIS reports. Turn your raw data into clear business insights.</p>
+      <p class="svc-price">Starting ₹500</p>
+    </div>
+    <div class="svc">
+      <div class="svc-num">02</div>
+      <h3 class="svc-title">Website Development</h3>
+      <p class="svc-desc">Clean, modern, mobile-friendly websites for your business. Complete website from scratch delivered fast.</p>
+      <p class="svc-price">Starting ₹3,000</p>
+    </div>
+    <div class="svc">
+      <div class="svc-num">03</div>
+      <h3 class="svc-title">Data Entry & Cleaning</h3>
+      <p class="svc-desc">Accurate, fast data entry and data cleaning services. Large datasets handled with 100% accuracy.</p>
+      <p class="svc-price">Starting ₹300</p>
+    </div>
+    <div class="svc">
+      <div class="svc-num">04</div>
+      <h3 class="svc-title">Business Landing Page</h3>
+      <p class="svc-desc">Single-page websites to promote your product or service. Designed to attract and convert customers online.</p>
+      <p class="svc-price">Starting ₹2,000</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <p class="sec-label">Why Choose Me</p>
+  <h2 class="sec-title">My Promise to You</h2>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon">⚡</div><div class="why-title">Fast Delivery</div><div class="why-desc">Work delivered within agreed deadline. No delays, no excuses.</div></div>
+    <div class="why-card"><div class="why-icon">💯</div><div class="why-title">100% Quality</div><div class="why-desc">Every project reviewed carefully before delivery. Your satisfaction first.</div></div>
+    <div class="why-card"><div class="why-icon">💰</div><div class="why-title">Honest Pricing</div><div class="why-desc">No hidden charges. Clear pricing discussed before starting work.</div></div>
+    <div class="why-card"><div class="why-icon">🔄</div><div class="why-title">Free Revisions</div><div class="why-desc">Not happy? I'll fix it. Your feedback matters to me.</div></div>
+  </div>
+</section>
+
+<div class="skills-wrap" id="skills">
+  <p class="sec-label">My Expertise</p>
+  <h2 class="sec-title" style="margin-bottom:2rem">Skills</h2>
+  <div class="skills-grid">
+    <div class="sk"><div class="sk-name">MS Excel — Advanced</div><div class="sk-track"><div class="sk-fill" style="width:96%"></div></div><div class="sk-pct">96%</div></div>
+    <div class="sk"><div class="sk-name">VLOOKUP & Formulas</div><div class="sk-track"><div class="sk-fill" style="width:94%"></div></div><div class="sk-pct">94%</div></div>
+    <div class="sk"><div class="sk-name">Pivot Tables</div><div class="sk-track"><div class="sk-fill" style="width:92%"></div></div><div class="sk-pct">92%</div></div>
+    <div class="sk"><div class="sk-name">Dashboard & Charts</div><div class="sk-track"><div class="sk-fill" style="width:90%"></div></div><div class="sk-pct">90%</div></div>
+    <div class="sk"><div class="sk-name">Website Development</div><div class="sk-track"><div class="sk-fill" style="width:85%"></div></div><div class="sk-pct">85%</div></div>
+    <div class="sk"><div class="sk-name">MIS Reporting</div><div class="sk-track"><div class="sk-fill" style="width:93%"></div></div><div class="sk-pct">93%</div></div>
+  </div>
+</div>
+
+<div class="process-wrap">
+  <p class="sec-label">How It Works</p>
+  <h2 class="sec-title">Simple 4-Step Process</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">01</div><div class="step-title">You Contact Me</div><div class="step-desc">WhatsApp or email me with your project details and requirements.</div></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">We Discuss</div><div class="step-desc">I understand your needs, timeline and give you a fair quote.</div></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">I Start Work</div><div class="step-desc">Work begins immediately. I keep you updated throughout.</div></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">You Get Delivery</div><div class="step-desc">Final work delivered on time. Revisions if needed. You're happy!</div></div>
+  </div>
+</div>
+
+<section id="contact">
+  <p class="sec-label">Let's Connect</p>
+  <h2 class="sec-title">Contact Me</h2>
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <h3>Ready to start a project?<br>Let's talk!</h3>
+      <div class="ci">
+        <div class="ci-icon">📱</div>
+        <div><div class="ci-label">WhatsApp / Call</div><div class="ci-val">8923092024</div></div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">✉️</div>
+        <div><div class="ci-label">Email</div><div class="ci-val">aliamas1778@gmail.com</div></div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">📍</div>
+        <div><div class="ci-label">Location</div><div class="ci-val">Mathura (MBD), Uttar Pradesh</div></div>
+      </div>
+      <div class="ci">
+        <div class="ci-icon">🕐</div>
+        <div><div class="ci-label">Working Hours</div><div class="ci-val">Mon – Sat, 9 AM – 7 PM</div></div>
+      </div>
+    </div>
+    <div class="form-grid">
+      <input type="text" class="fi" placeholder="Your Name *">
+      <input type="tel" class="fi" placeholder="Your Phone Number *">
+      <input type="email" class="fi" placeholder="Your Email">
+      <select class="fi">
+        <option value="">Select Service Needed</option>
+        <option>Excel / MIS Report</option>
+        <option>Website Development</option>
+        <option>Data Entry</option>
+        <option>Landing Page</option>
+        <option>Other</option>
+      </select>
+      <textarea class="fi" placeholder="Describe your project briefly..."></textarea>
+      <button class="submit-btn" onclick="window.open('https://wa.me/918923092024','_blank')">Send via WhatsApp →</button>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/918923092024" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<footer>
+  Made with care &nbsp;✦&nbsp; <span>Sheeba</span> &nbsp;✦&nbsp; Mathura (MBD), UP &nbsp;✦&nbsp; Excel & Web Expert
+</footer>
+
+</body>
+</html>
