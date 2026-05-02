@@ -3,274 +3,579 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Webnove - Excel & Web Freelance Expert | Moradabad</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<title>WebNove — Excel & Web Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--ink:#0f0f0f;--cream:#faf8f4;--warm:#f4ede0;--gold:#b8860b;--goldlt:#e8c97a;--muted:#888;--white:#fff}
-body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink)}
+  :root {
+    --gold: #facc15;
+    --gold-dim: rgba(250,204,21,0.18);
+    --gold-border: rgba(250,204,21,0.25);
+    --purple: #a78bfa;
+    --purple-dim: rgba(167,139,250,0.15);
+    --bg: #000000;
+    --card: #0f0f0f;
+    --card2: #141414;
+    --text: #d1d5db;
+    --white: #f3f4f6;
+    --muted: #6b7280;
+    --border: rgba(250,204,21,0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-nav{background:var(--ink);display:flex;justify-content:space-between;align-items:center;padding:1.1rem 2.5rem;position:sticky;top:0;z-index:99}
-.logo{font-family:'Cormorant Garamond',serif;color:var(--goldlt);font-size:1.6rem;letter-spacing:3px}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:#bbb;text-decoration:none;font-size:0.82rem;letter-spacing:1.5px;text-transform:uppercase;transition:color 0.3s}
-.nav-links a:hover{color:var(--goldlt)}
+  /* NAVBAR */
+  nav { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(0,0,0,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 18px 6%; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 900; color: var(--gold); letter-spacing: 1px; }
+  .logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { background: var(--gold); color: #000; padding: 10px 24px; border-radius: 50px; font-size: 14px; font-weight: 700; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
+  .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
 
-.hero{display:grid;grid-template-columns:1fr 340px;min-height:480px;background:var(--ink);overflow:hidden}
-.hero-left{padding:4rem 3rem;display:flex;flex-direction:column;justify-content:center}
-.badge{display:inline-block;background:rgba(184,134,11,0.15);border:1px solid rgba(184,134,11,0.4);color:var(--goldlt);font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;padding:0.4rem 1rem;margin-bottom:1.5rem;width:fit-content}
-.hero-left h1{font-family:'Cormorant Garamond',serif;font-size:3.8rem;color:white;line-height:1.05;margin-bottom:1.2rem}
-.hero-left h1 em{color:var(--goldlt);font-style:normal}
-.hero-left p{color:#999;font-size:0.95rem;line-height:1.9;max-width:420px;margin-bottom:2rem}
-.location-pill{display:flex;align-items:center;gap:0.5rem;color:#777;font-size:0.82rem;margin-bottom:2rem}
-.location-dot{width:7px;height:7px;background:var(--goldlt);border-radius:50%;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-gold{background:var(--gold);color:white;border:none;padding:0.85rem 2rem;font-family:'Outfit',sans-serif;font-size:0.85rem;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background 0.3s;text-decoration:none;display:inline-block}
-.btn-gold:hover{background:#9a7009}
-.btn-ghost{background:transparent;color:#bbb;border:1px solid rgba(255,255,255,0.2);padding:0.85rem 2rem;font-family:'Outfit',sans-serif;font-size:0.85rem;letter-spacing:1.5px;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
-.btn-ghost:hover{border-color:var(--goldlt);color:var(--goldlt)}
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 6% 60px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 560px; height: 560px; background: radial-gradient(circle, rgba(250,204,21,0.07) 0%, transparent 70%); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: 60px; left: -60px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(167,139,250,0.06) 0%, transparent 70%); pointer-events: none; }
+  .hero-text { max-width: 620px; position: relative; z-index: 1; }
+  .hero-badge { display: inline-block; background: var(--gold-dim); border: 1px solid var(--gold-border); color: var(--gold); padding: 8px 20px; border-radius: 50px; font-size: 13px; font-weight: 600; margin-bottom: 24px; letter-spacing: 0.5px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(40px, 5vw, 70px); font-weight: 900; line-height: 1.06; margin-bottom: 22px; color: var(--white); }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { font-size: 17px; color: var(--muted); line-height: 1.8; margin-bottom: 36px; max-width: 480px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: #000; padding: 14px 32px; border-radius: 50px; font-size: 15px; font-weight: 700; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; display: inline-block; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(250,204,21,0.3); }
+  .btn-outline { border: 1.5px solid var(--gold-border); color: var(--text); padding: 14px 32px; border-radius: 50px; font-size: 15px; font-weight: 500; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats { display: flex; gap: 40px; margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; color: var(--gold); }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 2px; }
 
-.hero-right{background:linear-gradient(160deg,#1a1a1a,#0a0a0a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;padding:2rem;border-left:1px solid rgba(184,134,11,0.2)}
-.avatar{width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,#2a2215,#3d3020);border:2px solid var(--goldlt);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:3.5rem;color:var(--goldlt)}
-.available-badge{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:#4ade80;font-size:0.72rem;letter-spacing:2px;padding:0.35rem 1rem;display:flex;align-items:center;gap:0.5rem}
-.green-dot{width:6px;height:6px;background:#4ade80;border-radius:50%}
-.quick-stats{width:100%;display:flex;flex-direction:column;gap:0.6rem}
-.qs-item{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:0.7rem 1rem;display:flex;justify-content:space-between;align-items:center}
-.qs-label{font-size:0.75rem;color:#777;letter-spacing:1px}
-.qs-val{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--goldlt)}
+  /* SECTION COMMON */
+  section { padding: 80px 6%; }
+  .section-label { color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; margin-bottom: 16px; color: var(--white); }
+  .section-sub { color: var(--muted); font-size: 16px; max-width: 500px; line-height: 1.7; margin-bottom: 48px; }
 
-.ticker{background:var(--gold);padding:0.6rem 0;overflow:hidden;white-space:nowrap}
-.ticker-inner{display:inline-block;animation:tick 20s linear infinite;font-size:0.78rem;letter-spacing:2px;color:var(--ink);font-weight:500}
-@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  /* SERVICES */
+  #services { background: var(--bg); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .service-card { background: var(--card); border: 1px solid #1f1f1f; border-radius: 20px; padding: 32px; transition: transform 0.3s, border-color 0.3s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gold); opacity: 0; transition: opacity 0.3s; }
+  .service-card:hover { transform: translateY(-6px); border-color: var(--gold-border); }
+  .service-card:hover::before { opacity: 1; }
+  .service-num { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 900; color: rgba(250,204,21,0.07); position: absolute; top: 12px; right: 20px; }
+  .popular-badge { display: inline-block; background: var(--gold-dim); color: var(--gold); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 50px; margin-bottom: 16px; }
+  .service-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 10px; color: var(--white); }
+  .service-card p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 22px; }
+  .service-price { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--gold); }
 
-section{padding:4rem 2.5rem}
-.sec-label{font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
-.sec-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;margin-bottom:2.5rem;color:var(--ink)}
+  /* DEVICE PREVIEW SECTION */
+  #preview { background: #050505; }
+  .preview-tabs { display: flex; gap: 0; margin-bottom: 40px; background: var(--card); border: 1px solid #1f1f1f; border-radius: 50px; padding: 6px; width: fit-content; }
+  .tab-btn { padding: 10px 28px; border-radius: 50px; border: none; background: none; color: var(--muted); font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: inherit; }
+  .tab-btn.active { background: var(--gold); color: #000; }
+  .preview-frame { background: var(--card); border: 1px solid #1f1f1f; border-radius: 20px; overflow: hidden; }
+  .preview-bar { background: #0a0a0a; padding: 14px 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #1a1a1a; }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #ffbd2e; }
+  .dot-g { background: #28ca41; }
+  .url-bar { flex: 1; background: rgba(255,255,255,0.04); border-radius: 8px; padding: 7px 16px; font-size: 13px; color: var(--muted); border: 1px solid #1a1a1a; }
+  .device-wrapper { display: flex; justify-content: center; padding: 30px 20px; gap: 40px; align-items: flex-start; }
+  .desktop-mock { width: 100%; max-width: 720px; border-radius: 12px; overflow: hidden; border: 1px solid #1f1f1f; }
+  .mobile-frame { width: 220px; background: #111; border-radius: 36px; overflow: hidden; border: 6px solid #1a1a1a; box-shadow: 0 20px 60px rgba(0,0,0,0.8); flex-shrink: 0; }
+  .mobile-notch { height: 28px; background: #000; border-radius: 0 0 14px 14px; width: 80px; margin: 0 auto; }
 
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem}
-.svc{background:var(--white);border:1px solid #e8e2d6;padding:1.8rem 1.5rem;position:relative;transition:all 0.3s;cursor:default}
-.svc:hover{border-color:var(--gold);transform:translateY(-3px)}
-.svc-num{font-family:'Cormorant Garamond',serif;font-size:3rem;color:#f0e8d8;font-weight:700;line-height:1;margin-bottom:0.5rem}
-.svc-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;margin-bottom:0.6rem;color:var(--ink)}
-.svc-desc{font-size:0.82rem;color:var(--muted);line-height:1.75;margin-bottom:1rem}
-.svc-price{font-size:0.75rem;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
-.svc-tag{position:absolute;top:1rem;right:1rem;background:var(--warm);color:#a07030;font-size:0.65rem;letter-spacing:1px;padding:0.25rem 0.6rem}
+  /* SCREENSHOT SECTION */
+  #screenshots { background: var(--bg); }
+  .screenshot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .screenshot-card { border-radius: 16px; overflow: hidden; border: 1px solid #1a1a1a; position: relative; cursor: pointer; transition: transform 0.3s, border-color 0.3s; }
+  .screenshot-card:hover { transform: scale(1.02); border-color: var(--gold-border); }
+  .screenshot-preview { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+  .ss-hero { background: #050505; }
+  .ss-services { background: #040404; }
+  .ss-skills { background: #050505; }
+  .ss-contact { background: #040404; }
+  .ss-label { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.85); padding: 10px 16px; font-size: 13px; font-weight: 600; backdrop-filter: blur(10px); color: var(--text); border-top: 1px solid #1a1a1a; }
+  .ss-mockup { padding: 24px; width: 100%; }
 
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2rem}
-.why-card{background:var(--ink);color:white;padding:1.5rem;text-align:center}
-.why-icon{font-size:1.5rem;margin-bottom:0.6rem}
-.why-title{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--goldlt);margin-bottom:0.4rem}
-.why-desc{font-size:0.78rem;color:#888;line-height:1.6}
+  /* PDF SECTION */
+  #pdf-section { background: #050505; }
+  .pdf-card { background: var(--card); border: 1px solid #1f1f1f; border-radius: 24px; padding: 48px; display: flex; gap: 48px; align-items: center; }
+  .pdf-icon { width: 100px; height: 120px; background: var(--gold-dim); border: 1px solid var(--gold-border); border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pdf-icon svg { width: 48px; height: 48px; }
+  .pdf-info h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; margin-bottom: 12px; color: var(--white); }
+  .pdf-info p { color: var(--muted); font-size: 15px; line-height: 1.7; margin-bottom: 24px; }
+  .pdf-meta { display: flex; gap: 14px; margin-bottom: 28px; flex-wrap: wrap; }
+  .pdf-tag { background: var(--gold-dim); border: 1px solid var(--gold-border); color: var(--gold); padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; }
 
-.skills-wrap{background:var(--warm);padding:4rem 2.5rem}
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
-.sk{padding:1.2rem;background:var(--white);border:1px solid #e0d8c8}
-.sk-name{font-size:0.85rem;margin-bottom:0.5rem;color:var(--ink)}
-.sk-track{height:3px;background:#e8e2d6}
-.sk-fill{height:3px;background:var(--gold)}
-.sk-pct{font-size:0.7rem;color:var(--muted);margin-top:0.3rem;text-align:right}
+  /* DEMO WEBSITES */
+  #demos { background: var(--bg); }
+  .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .demo-card { background: var(--card); border: 1px solid #1a1a1a; border-radius: 20px; overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
+  .demo-card:hover { transform: translateY(-6px); border-color: var(--gold-border); }
+  .demo-preview { height: 200px; display: flex; align-items: center; justify-content: center; }
+  .demo-preview-1 { background: #050505; }
+  .demo-preview-2 { background: #040504; }
+  .demo-preview-3 { background: #050404; }
+  .demo-thumb { width: 82%; height: 82%; border-radius: 10px; background: #0a0a0a; border: 1px solid #222; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; }
+  .demo-info { padding: 24px; }
+  .demo-type { font-size: 11px; color: var(--gold); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .demo-info h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--white); }
+  .demo-info p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+  .demo-price { font-size: 13px; color: var(--muted); }
+  .demo-price span { color: var(--gold); font-weight: 700; }
 
-.process-wrap{background:var(--ink);padding:4rem 2.5rem}
-.process-wrap .sec-title{color:white}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(255,255,255,0.07)}
-.step{background:var(--ink);padding:2rem 1.5rem}
-.step-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:rgba(184,134,11,0.25);font-weight:700;margin-bottom:0.5rem}
-.step-title{font-family:'Cormorant Garamond',serif;color:white;font-size:1rem;margin-bottom:0.4rem}
-.step-desc{font-size:0.78rem;color:#666;line-height:1.7}
+  /* SKILLS */
+  #skills { background: #050505; }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+  .skill-item { display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: var(--card); border: 1px solid #1a1a1a; border-radius: 14px; transition: border-color 0.3s; }
+  .skill-item:hover { border-color: var(--gold-border); }
+  .skill-icon { width: 44px; height: 44px; background: var(--gold-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .skill-name { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--white); }
+  .skill-bar-bg { height: 4px; background: #1a1a1a; border-radius: 50px; flex: 1; }
+  .skill-bar-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--purple)); border-radius: 50px; }
+  .skill-pct { font-size: 13px; color: var(--gold); font-weight: 700; margin-left: auto; flex-shrink: 0; }
 
-.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-.contact-left h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;margin-bottom:1.5rem;color:var(--ink)}
-.ci{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid #ece8df}
-.ci:last-child{border-bottom:none}
-.ci-icon{width:38px;height:38px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0}
-.ci-label{font-size:0.68rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:0.2rem}
-.ci-val{font-size:0.9rem;color:var(--ink);font-weight:500}
+  /* CONTACT */
+  #contact { background: var(--bg); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .contact-info { display: flex; flex-direction: column; gap: 16px; }
+  .contact-item { display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: var(--card); border: 1px solid #1a1a1a; border-radius: 14px; transition: border-color 0.3s; }
+  .contact-item:hover { border-color: var(--gold-border); }
+  .contact-icon { width: 44px; height: 44px; background: var(--gold-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .contact-detail span { display: block; font-size: 12px; color: var(--muted); margin-bottom: 3px; }
+  .contact-detail strong { font-size: 15px; color: var(--white); }
+  .contact-form { background: var(--card); border: 1px solid #1a1a1a; border-radius: 20px; padding: 36px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 8px; font-weight: 500; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; background: #0a0a0a; border: 1px solid #222; border-radius: 10px; padding: 13px 16px; color: var(--text); font-family: inherit; font-size: 14px; transition: border-color 0.3s; outline: none; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { height: 110px; resize: vertical; }
+  .form-group select option { background: #0f0f0f; }
+  .wa-btn { width: 100%; background: #25D366; color: white; border: none; padding: 14px; border-radius: 12px; font-size: 15px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; font-family: inherit; }
+  .wa-btn:hover { opacity: 0.88; }
 
-.form-grid{display:flex;flex-direction:column;gap:0.8rem}
-.fi{padding:0.85rem 1rem;border:1px solid #ddd8ce;background:var(--warm);font-family:'Outfit',sans-serif;font-size:0.88rem;outline:none;transition:border-color 0.3s;width:100%}
-.fi:focus{border-color:var(--gold)}
-textarea.fi{min-height:110px;resize:vertical}
-.submit-btn{background:var(--ink);color:white;border:none;padding:0.9rem 2rem;font-family:'Outfit',sans-serif;font-size:0.82rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.3s;align-self:flex-start}
-.submit-btn:hover{background:var(--gold)}
+  /* FOOTER */
+  footer { text-align: center; padding: 40px 6%; border-top: 1px solid #111; color: var(--muted); font-size: 14px; background: #000; }
+  footer strong { color: var(--gold); }
 
-.whatsapp-float{position:fixed;bottom:2rem;right:2rem;background:#25d366;color:white;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.4);z-index:999;transition:transform 0.3s}
-.whatsapp-float:hover{transform:scale(1.1)}
+  /* FLOATING WA BUTTON */
+  .wa-float { position: fixed; bottom: 30px; right: 30px; width: 58px; height: 58px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; box-shadow: 0 6px 24px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.2s; }
+  .wa-float:hover { transform: scale(1.1); }
 
-footer{background:#080808;color:#555;text-align:center;padding:1.5rem;font-size:0.78rem;letter-spacing:2px}
-footer span{color:var(--goldlt)}
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 5%; }
+    .nav-links { display: none; }
+    .hero { padding: 90px 5% 50px; }
+    .hero-stats { gap: 20px; }
+    .screenshot-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .pdf-card { flex-direction: column; padding: 28px; }
+    .device-wrapper { flex-direction: column; align-items: center; }
+    section { padding: 60px 5%; }
+  }
 
-@media(max-width:768px){
-  .hero{grid-template-columns:1fr}
-  .hero-right{display:none}
-  .hero-left{padding:2.5rem 1.5rem}
-  .hero-left h1{font-size:2.5rem}
-  nav{padding:1rem 1.5rem}
-  .nav-links{gap:1rem}
-  section{padding:3rem 1.5rem}
-  .contact-wrap{grid-template-columns:1fr}
-  .skills-wrap{padding:3rem 1.5rem}
-  .process-wrap{padding:3rem 1.5rem}
-}
+  /* Mini mockup */
+  .mini-nav { background: #0a0a0a; border-bottom: 1px solid rgba(250,204,21,0.2); padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--gold); font-weight: 700; }
+  .mini-card { background: #0a0a0a; margin: 6px 8px; border-radius: 8px; padding: 10px; border: 1px solid rgba(250,204,21,0.15); }
+  .mini-card-title { font-size: 10px; font-weight: 700; color: #f3f4f6; margin-bottom: 3px; }
+  .mini-card-sub { font-size: 8px; color: #555; }
+  .mini-price { font-size: 11px; color: var(--gold); font-weight: 800; margin-top: 4px; }
+  .mini-section-head { padding: 10px 12px 4px; font-size: 9px; font-weight: 800; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; background: #050505; }
 </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav>
-  <div class="logo">Webnove</div>
+  <div class="logo">Web<span>Nove</span></div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#skills">Skills</a></li>
+    <li><a href="#screenshots">Screenshots</a></li>
+    <li><a href="#pdf-section">Portfolio PDF</a></li>
+    <li><a href="#demos">Demo Sites</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <a href="https://wa.me/918923092024" class="nav-cta" target="_blank">Hire Me</a>
 </nav>
 
-<div class="hero">
-  <div class="hero-left">
-    <div class="badge">Freelance Expert — Available for Work</div>
-    <h1>Excel & Web<br><em>Solutions</em><br>by Webnove</h1>
-    <div class="location-pill">
-      <div class="location-dot"></div>
-      Based in Moradabad · Serving clients across India
-    </div>
-    <p>I help businesses manage their data smartly with Excel dashboards and build a strong online presence with professional websites. Quality work, honest pricing, on-time delivery.</p>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-badge">✦ Available for Projects</div>
+    <h1>Excel & Web<br><em>Solutions</em><br>by WebNove</h1>
+    <p>Based in Mathura (MBD) · Serving clients across India. We help businesses manage data smartly and build a strong online presence.</p>
     <div class="hero-btns">
-      <a href="https://wa.me/918923092024" class="btn-gold">WhatsApp Me</a>
-      <a href="#services" class="btn-ghost">View Services</a>
+      <a href="https://wa.me/918923092024" class="btn-primary" target="_blank">WhatsApp Me</a>
+      <a href="#services" class="btn-outline">View Services</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">50+</div><div class="stat-label">Projects Done</div></div>
+      <div><div class="stat-num">24hr</div><div class="stat-label">Response Time</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">Satisfaction</div></div>
     </div>
   </div>
-  <div class="hero-right">
-    <div class="avatar">W</div>
-    <div class="available-badge"><div class="green-dot"></div> Available for Projects</div>
-    <div class="quick-stats">
-      <div class="qs-item"><span class="qs-label">Response Time</span><span class="qs-val">Within 24 hrs</span></div>
-      <div class="qs-item"><span class="qs-label">Excel Skills</span><span class="qs-val">Advanced</span></div>
-      <div class="qs-item"><span class="qs-label">Delivery</span><span class="qs-val">Always On Time</span></div>
-      <div class="qs-item"><span class="qs-label">Location</span><span class="qs-val">Moradabad, UP</span></div>
-    </div>
-  </div>
-</div>
+</section>
 
-<div class="ticker">
-  <span class="ticker-inner">
-    ✦ Excel Dashboards &nbsp;&nbsp; ✦ VLOOKUP & Pivot Tables &nbsp;&nbsp; ✦ Website Development &nbsp;&nbsp; ✦ MIS Reports &nbsp;&nbsp; ✦ Data Entry &nbsp;&nbsp; ✦ Business Landing Pages &nbsp;&nbsp; ✦ Data Analysis &nbsp;&nbsp; ✦ Excel Automation &nbsp;&nbsp;&nbsp;&nbsp;
-    ✦ Excel Dashboards &nbsp;&nbsp; ✦ VLOOKUP & Pivot Tables &nbsp;&nbsp; ✦ Website Development &nbsp;&nbsp; ✦ MIS Reports &nbsp;&nbsp; ✦ Data Entry &nbsp;&nbsp; ✦ Business Landing Pages &nbsp;&nbsp; ✦ Data Analysis &nbsp;&nbsp; ✦ Excel Automation &nbsp;&nbsp;
-  </span>
-</div>
-
+<!-- SERVICES -->
 <section id="services">
-  <p class="sec-label">What I Offer</p>
-  <h2 class="sec-title">My Services</h2>
+  <div class="section-label">What I Offer</div>
+  <h2 class="section-title">My Services</h2>
+  <p class="section-sub">Quality work, honest pricing, on-time delivery — every single time.</p>
   <div class="services-grid">
-    <div class="svc">
-      <div class="svc-num">01</div>
-      <div class="svc-tag">Most Popular</div>
-      <h3 class="svc-title">Excel & MIS Reports</h3>
-      <p class="svc-desc">Professional dashboards, VLOOKUP, Pivot Tables, automated MIS reports. Turn your raw data into clear business insights.</p>
-      <p class="svc-price">Starting ₹500</p>
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="popular-badge">⭐ Most Popular</div>
+      <h3>Excel & MIS Reports</h3>
+      <p>Professional dashboards, VLOOKUP, Pivot Tables, automated MIS reports. Turn raw data into clear business insights.</p>
+      <div class="service-price">Starting ₹500</div>
     </div>
-    <div class="svc">
-      <div class="svc-num">02</div>
-      <h3 class="svc-title">Website Development</h3>
-      <p class="svc-desc">Clean, modern, mobile-friendly websites for your business. Complete website from scratch delivered fast.</p>
-      <p class="svc-price">Starting ₹3,000</p>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <h3>Website Development</h3>
+      <p>Clean, modern, mobile-friendly websites for your business. Complete website from scratch delivered fast.</p>
+      <div class="service-price">Starting ₹3,000</div>
     </div>
-    <div class="svc">
-      <div class="svc-num">03</div>
-      <h3 class="svc-title">Data Entry & Cleaning</h3>
-      <p class="svc-desc">Accurate, fast data entry and data cleaning services. Large datasets handled with 100% accuracy.</p>
-      <p class="svc-price">Starting ₹300</p>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <h3>Data Entry & Cleaning</h3>
+      <p>Accurate, fast data entry and cleaning services. Large datasets handled with 100% accuracy guaranteed.</p>
+      <div class="service-price">Starting ₹300</div>
     </div>
-    <div class="svc">
-      <div class="svc-num">04</div>
-      <h3 class="svc-title">Business Landing Page</h3>
-      <p class="svc-desc">Single-page websites to promote your product or service. Designed to attract and convert customers online.</p>
-      <p class="svc-price">Starting ₹2,000</p>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <h3>Business Landing Page</h3>
+      <p>Single-page websites to promote your product or service. Designed to attract and convert customers online.</p>
+      <div class="service-price">Starting ₹2,000</div>
     </div>
   </div>
 </section>
 
-<section style="padding-top:0">
-  <p class="sec-label">Why Choose Me</p>
-  <h2 class="sec-title">My Promise to You</h2>
-  <div class="why-grid">
-    <div class="why-card"><div class="why-icon">⚡</div><div class="why-title">Fast Delivery</div><div class="why-desc">Work delivered within agreed deadline. No delays, no excuses.</div></div>
-    <div class="why-card"><div class="why-icon">💯</div><div class="why-title">100% Quality</div><div class="why-desc">Every project reviewed carefully before delivery. Your satisfaction first.</div></div>
-    <div class="why-card"><div class="why-icon">💰</div><div class="why-title">Honest Pricing</div><div class="why-desc">No hidden charges. Clear pricing discussed before starting work.</div></div>
-    <div class="why-card"><div class="why-icon">🔄</div><div class="why-title">Free Revisions</div><div class="why-desc">Not happy? I'll fix it. Your feedback matters to me.</div></div>
+<!-- DEVICE PREVIEW -->
+<section id="preview">
+  <div class="section-label">Live Preview</div>
+  <h2 class="section-title">Desktop & Mobile Design</h2>
+  <p class="section-sub">Your website will look stunning on every screen — phone, tablet, or desktop.</p>
+  <div class="preview-tabs">
+    <button class="tab-btn active" onclick="showView('desktop', event)">🖥 Desktop</button>
+    <button class="tab-btn" onclick="showView('mobile', event)">📱 Mobile</button>
+    <button class="tab-btn" onclick="showView('both', event)">⊞ Both</button>
+  </div>
+  <div class="preview-frame">
+    <div class="preview-bar">
+      <div class="dots">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+      </div>
+      <div class="url-bar">https://anas-sheikh123.github.io/my_portfolio/</div>
+    </div>
+    <div class="device-wrapper" id="device-wrapper">
+      <!-- Desktop mock -->
+      <div class="desktop-mock" id="desktop-view">
+        <div style="background:#0a0a0a;border-bottom:1px solid rgba(250,204,21,0.15);padding:8px 16px;display:flex;justify-content:space-between;align-items:center;">
+          <span style="font-size:14px;font-weight:900;color:#facc15;font-family:'Playfair Display',serif;">WebNove</span>
+          <span style="display:flex;gap:20px;font-size:9px;color:#6b7280;">Services · Skills · Contact</span>
+          <span style="background:#facc15;color:#000;padding:4px 14px;border-radius:50px;font-size:9px;font-weight:700;">Hire Me</span>
+        </div>
+        <div style="background:#000;padding:32px 40px;display:flex;gap:40px;align-items:center;">
+          <div style="flex:1;">
+            <div style="background:rgba(250,204,21,0.12);color:#facc15;padding:4px 14px;border-radius:50px;font-size:9px;font-weight:700;display:inline-block;margin-bottom:10px;">✦ Available for Projects</div>
+            <div style="font-size:26px;font-weight:900;color:#f3f4f6;line-height:1.1;margin-bottom:10px;font-family:'Playfair Display',serif;">Excel & Web<br><span style="color:#facc15;">Solutions</span><br>by WebNove</div>
+            <div style="font-size:10px;color:#6b7280;margin-bottom:14px;">Based in Mathura (MBD) · Serving clients across India</div>
+            <div style="display:flex;gap:10px;">
+              <span style="background:#facc15;color:#000;padding:6px 16px;border-radius:50px;font-size:9px;font-weight:700;">WhatsApp Me</span>
+              <span style="border:1px solid rgba(250,204,21,0.3);color:#facc15;padding:6px 16px;border-radius:50px;font-size:9px;">View Services</span>
+            </div>
+          </div>
+          <div style="display:flex;gap:24px;">
+            <div style="text-align:center;"><div style="font-size:22px;font-weight:900;color:#facc15;font-family:'Playfair Display',serif;">50+</div><div style="font-size:8px;color:#6b7280;">Projects</div></div>
+            <div style="text-align:center;"><div style="font-size:22px;font-weight:900;color:#facc15;font-family:'Playfair Display',serif;">24hr</div><div style="font-size:8px;color:#6b7280;">Response</div></div>
+            <div style="text-align:center;"><div style="font-size:22px;font-weight:900;color:#facc15;font-family:'Playfair Display',serif;">100%</div><div style="font-size:8px;color:#6b7280;">Quality</div></div>
+          </div>
+        </div>
+        <div style="background:#050505;padding:24px 40px;border-top:1px solid #111;">
+          <div style="font-size:10px;font-weight:700;color:#facc15;letter-spacing:2px;margin-bottom:16px;">MY SERVICES</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+            <div style="background:#0a0a0a;border:1px solid rgba(250,204,21,0.15);border-radius:8px;padding:12px;"><div style="font-size:10px;font-weight:700;color:#f3f4f6;margin-bottom:4px;">Excel & MIS</div><div style="font-size:8px;color:#6b7280;">Dashboards, Pivots</div><div style="font-size:11px;color:#facc15;font-weight:800;margin-top:5px;">₹500+</div></div>
+            <div style="background:#0a0a0a;border:1px solid rgba(250,204,21,0.15);border-radius:8px;padding:12px;"><div style="font-size:10px;font-weight:700;color:#f3f4f6;margin-bottom:4px;">Website Dev</div><div style="font-size:8px;color:#6b7280;">Modern & Mobile</div><div style="font-size:11px;color:#facc15;font-weight:800;margin-top:5px;">₹3,000+</div></div>
+            <div style="background:#0a0a0a;border:1px solid rgba(250,204,21,0.15);border-radius:8px;padding:12px;"><div style="font-size:10px;font-weight:700;color:#f3f4f6;margin-bottom:4px;">Data Entry</div><div style="font-size:8px;color:#6b7280;">Fast & Accurate</div><div style="font-size:11px;color:#facc15;font-weight:800;margin-top:5px;">₹300+</div></div>
+            <div style="background:#0a0a0a;border:1px solid rgba(250,204,21,0.15);border-radius:8px;padding:12px;"><div style="font-size:10px;font-weight:700;color:#f3f4f6;margin-bottom:4px;">Landing Page</div><div style="font-size:8px;color:#6b7280;">Convert Customers</div><div style="font-size:11px;color:#facc15;font-weight:800;margin-top:5px;">₹2,000+</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile mock -->
+      <div class="mobile-frame" id="mobile-view" style="display:none;">
+        <div class="mobile-notch"></div>
+        <div style="background:#000;">
+          <div class="mini-nav">
+            <span style="font-size:13px;font-family:'Playfair Display',serif;">WebNove</span>
+            <span style="font-size:11px;color:#6b7280;">☰</span>
+          </div>
+          <div style="padding:20px 14px;text-align:center;background:#000;">
+            <div style="background:rgba(250,204,21,0.12);color:#facc15;padding:4px 12px;border-radius:50px;font-size:9px;font-weight:700;display:inline-block;margin-bottom:10px;">✦ Available</div>
+            <div style="font-size:18px;font-weight:900;color:#f3f4f6;line-height:1.1;margin-bottom:8px;font-family:'Playfair Display',serif;">Excel & Web<br><span style="color:#facc15;">Solutions</span></div>
+            <div style="font-size:9px;color:#6b7280;margin-bottom:14px;">Mathura (MBD) · India</div>
+            <div style="background:#facc15;color:#000;padding:8px 20px;border-radius:50px;font-size:10px;font-weight:700;display:inline-block;">WhatsApp Me</div>
+          </div>
+          <div class="mini-section-head">SERVICES</div>
+          <div class="mini-card"><div class="mini-card-title">⭐ Excel & MIS Reports</div><div class="mini-card-sub">Dashboards, VLOOKUP, Pivot Tables</div><div class="mini-price">₹500+</div></div>
+          <div class="mini-card"><div class="mini-card-title">🌐 Website Development</div><div class="mini-card-sub">Modern mobile-friendly sites</div><div class="mini-price">₹3,000+</div></div>
+          <div class="mini-card"><div class="mini-card-title">📊 Data Entry & Cleaning</div><div class="mini-card-sub">100% accuracy, fast delivery</div><div class="mini-price">₹300+</div></div>
+          <div style="padding:14px;background:#050505;border-top:1px solid #111;">
+            <div style="font-size:9px;color:#555;text-align:center;">📍 Mathura MBD · 📱 8923092024</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="skills-wrap" id="skills">
-  <p class="sec-label">My Expertise</p>
-  <h2 class="sec-title" style="margin-bottom:2rem">Skills</h2>
+<!-- SCREENSHOT SECTION -->
+<section id="screenshots">
+  <div class="section-label">Website Screenshots</div>
+  <h2 class="section-title">Page Previews</h2>
+  <p class="section-sub">Different sections of the website — beautifully crafted for maximum impact.</p>
+  <div class="screenshot-grid">
+    <div class="screenshot-card">
+      <div class="screenshot-preview ss-hero">
+        <div class="ss-mockup">
+          <div style="font-size:26px;font-weight:900;color:#f3f4f6;line-height:1.1;margin-bottom:8px;font-family:'Playfair Display',serif;">Excel & Web<br><span style="color:#facc15;">Solutions</span></div>
+          <div style="font-size:11px;color:#6b7280;margin-bottom:14px;">Based in Mathura MBD · Serving India</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <div style="background:#facc15;color:#000;padding:7px 18px;border-radius:50px;font-size:11px;font-weight:700;">WhatsApp Me</div>
+            <div style="border:1px solid rgba(250,204,21,0.3);color:#facc15;padding:7px 18px;border-radius:50px;font-size:11px;">View Services</div>
+          </div>
+          <div style="display:flex;gap:24px;margin-top:18px;padding-top:14px;border-top:1px solid #111;">
+            <div><div style="font-size:16px;font-weight:900;color:#facc15;font-family:'Playfair Display',serif;">50+</div><div style="font-size:9px;color:#555;">Projects</div></div>
+            <div><div style="font-size:16px;font-weight:900;color:#facc15;font-family:'Playfair Display',serif;">24hr</div><div style="font-size:9px;color:#555;">Response</div></div>
+            <div><div style="font-size:16px;font-weight:900;color:#facc15;font-family:'Playfair Display',serif;">100%</div><div style="font-size:9px;color:#555;">Quality</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ss-label">🏠 Hero Section</div>
+    </div>
+    <div class="screenshot-card">
+      <div class="screenshot-preview ss-services">
+        <div class="ss-mockup">
+          <div style="font-size:11px;color:#facc15;font-weight:700;letter-spacing:2px;margin-bottom:10px;">MY SERVICES</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+            <div style="background:#0a0a0a;border:1px solid rgba(250,204,21,0.15);border-radius:8px;padding:10px;"><div style="font-size:10px;font-weight:700;color:#f3f4f6;margin-bottom:3px;">📊 Excel & MIS</div><div style="font-size:8px;color:#555;">Dashboards & Reports</div><div style="font-size:11px;color:#facc15;font-weight:800;margin-top:5px;">₹500+</div></div>
+            <div style="background:#0a0a0a;border:1px solid rgba(250,204,21,0.15);border-radius:8px;padding:10px;"><div style="font-size:10px;font-weight:700;color:#f3f4f6;margin-bottom:3px;">🌐 Website Dev</div><div style="font-size:8px;color:#555;">Modern & Mobile</div><div style="font-size:11px;color:#facc15;font-weight:800;margin-top:5px;">₹3,000+</div></div>
+            <div style="background:#0a0a0a;border:1px solid rgba(250,204,21,0.15);border-radius:8px;padding:10px;"><div style="font-size:10px;font-weight:700;color:#f3f4f6;margin-bottom:3px;">📁 Data Entry</div><div style="font-size:8px;color:#555;">Fast & Accurate</div><div style="font-size:11px;color:#facc15;font-weight:800;margin-top:5px;">₹300+</div></div>
+            <div style="background:#0a0a0a;border:1px solid rgba(250,204,21,0.15);border-radius:8px;padding:10px;"><div style="font-size:10px;font-weight:700;color:#f3f4f6;margin-bottom:3px;">🚀 Landing Page</div><div style="font-size:8px;color:#555;">Convert Customers</div><div style="font-size:11px;color:#facc15;font-weight:800;margin-top:5px;">₹2,000+</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ss-label">⚙️ Services Section</div>
+    </div>
+    <div class="screenshot-card">
+      <div class="screenshot-preview ss-skills">
+        <div class="ss-mockup">
+          <div style="font-size:11px;color:#facc15;font-weight:700;letter-spacing:2px;margin-bottom:12px;">MY SKILLS</div>
+          <div style="display:flex;flex-direction:column;gap:9px;">
+            <div><div style="display:flex;justify-content:space-between;font-size:10px;color:#d1d5db;margin-bottom:4px;"><span>MS Excel — Advanced</span><span style="color:#facc15;">96%</span></div><div style="height:4px;background:#111;border-radius:50px;"><div style="width:96%;height:100%;background:linear-gradient(90deg,#facc15,#a78bfa);border-radius:50px;"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:10px;color:#d1d5db;margin-bottom:4px;"><span>VLOOKUP & Formulas</span><span style="color:#facc15;">94%</span></div><div style="height:4px;background:#111;border-radius:50px;"><div style="width:94%;height:100%;background:linear-gradient(90deg,#facc15,#a78bfa);border-radius:50px;"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:10px;color:#d1d5db;margin-bottom:4px;"><span>Pivot Tables</span><span style="color:#facc15;">92%</span></div><div style="height:4px;background:#111;border-radius:50px;"><div style="width:92%;height:100%;background:linear-gradient(90deg,#facc15,#a78bfa);border-radius:50px;"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:10px;color:#d1d5db;margin-bottom:4px;"><span>Website Development</span><span style="color:#facc15;">85%</span></div><div style="height:4px;background:#111;border-radius:50px;"><div style="width:85%;height:100%;background:linear-gradient(90deg,#facc15,#a78bfa);border-radius:50px;"></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ss-label">📊 Skills Section</div>
+    </div>
+    <div class="screenshot-card">
+      <div class="screenshot-preview ss-contact">
+        <div class="ss-mockup">
+          <div style="font-size:11px;color:#facc15;font-weight:700;letter-spacing:2px;margin-bottom:12px;">CONTACT ME</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:center;gap:10px;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;padding:8px 12px;"><span style="font-size:14px;">📱</span><div><div style="font-size:9px;color:#555;">WhatsApp</div><div style="font-size:11px;font-weight:700;color:#f3f4f6;">8923092024</div></div></div>
+            <div style="display:flex;align-items:center;gap:10px;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;padding:8px 12px;"><span style="font-size:14px;">✉️</span><div><div style="font-size:9px;color:#555;">Email</div><div style="font-size:11px;font-weight:700;color:#f3f4f6;">aliamas1778@gmail.com</div></div></div>
+            <div style="display:flex;align-items:center;gap:10px;background:#0a0a0a;border:1px solid #1a1a1a;border-radius:8px;padding:8px 12px;"><span style="font-size:14px;">📍</span><div><div style="font-size:9px;color:#555;">Location</div><div style="font-size:11px;font-weight:700;color:#f3f4f6;">Mathura MBD, UP</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ss-label">📞 Contact Section</div>
+    </div>
+  </div>
+</section>
+
+<!-- PDF SECTION -->
+<section id="pdf-section">
+  <div class="section-label">Portfolio Download</div>
+  <h2 class="section-title">Download My Portfolio</h2>
+  <p class="section-sub">Get my complete portfolio as a beautifully designed PDF — share it with potential clients!</p>
+  <div class="pdf-card">
+    <div class="pdf-icon">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="4" width="28" height="36" rx="4" fill="rgba(250,204,21,0.1)" stroke="#facc15" stroke-width="1.5"/>
+        <path d="M28 4v10h10" stroke="#facc15" stroke-width="1.5" fill="none"/>
+        <text x="14" y="32" font-size="10" fill="#facc15" font-weight="800">PDF</text>
+        <rect x="12" y="20" width="16" height="1.5" rx="1" fill="#facc15" opacity="0.4"/>
+        <rect x="12" y="24" width="12" height="1.5" rx="1" fill="#facc15" opacity="0.4"/>
+      </svg>
+    </div>
+    <div class="pdf-info">
+      <h3>WebNove — Complete Portfolio PDF</h3>
+      <p>Includes all services, pricing, skills, process overview, and contact details. Professional layout — ready to share with clients, upload to Freelancer/Fiverr, or print.</p>
+      <div class="pdf-meta">
+        <span class="pdf-tag">📄 PDF Format</span>
+        <span class="pdf-tag">A4 Size</span>
+        <span class="pdf-tag">Print Ready</span>
+        <span class="pdf-tag">Share-Friendly</span>
+      </div>
+      <a href="sheeba_portfolio.pdf" download="WebNove_Portfolio.pdf" class="btn-primary">⬇ Download Portfolio PDF</a>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO WEBSITES -->
+<section id="demos">
+  <div class="section-label">Demo Projects</div>
+  <h2 class="section-title">Sample Websites I Can Build</h2>
+  <p class="section-sub">Here are 3 examples of websites I can create for your business — each unique, professional, and mobile-friendly.</p>
+  <div class="demo-grid">
+    <div class="demo-card">
+      <div class="demo-preview demo-preview-1">
+        <div class="demo-thumb">
+          <div style="background:#facc15;height:3px;width:80%;border-radius:2px;"></div>
+          <div style="font-size:17px;font-weight:900;color:#f3f4f6;text-align:center;line-height:1.2;font-family:'Playfair Display',serif;">Raj Medical<br><span style="color:#facc15;">Clinic</span></div>
+          <div style="background:#050505;border:1px solid rgba(250,204,21,0.2);border-radius:8px;padding:10px 12px;width:100%;">
+            <div style="height:3px;background:rgba(250,204,21,0.3);border-radius:2px;margin-bottom:5px;width:70%;"></div>
+            <div style="height:3px;background:#1a1a1a;border-radius:2px;margin-bottom:5px;width:90%;"></div>
+            <div style="height:3px;background:#1a1a1a;border-radius:2px;width:50%;"></div>
+          </div>
+          <div style="background:#facc15;color:#000;padding:5px 14px;border-radius:50px;font-size:10px;font-weight:700;">Book Appointment</div>
+        </div>
+      </div>
+      <div class="demo-info">
+        <div class="demo-type">Medical / Healthcare</div>
+        <h3>Clinic / Doctor Website</h3>
+        <p>Appointment booking, doctor profiles, services list, contact & location map. Perfect for local clinics.</p>
+        <div class="demo-price">Starting at <span>₹4,000</span></div>
+      </div>
+    </div>
+    <div class="demo-card">
+      <div class="demo-preview demo-preview-2">
+        <div class="demo-thumb">
+          <div style="background:#facc15;height:3px;width:80%;border-radius:2px;"></div>
+          <div style="font-size:16px;font-weight:900;color:#f3f4f6;text-align:center;line-height:1.2;font-family:'Playfair Display',serif;">Sharma's<br><span style="color:#facc15;">Restaurant</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;width:100%;">
+            <div style="background:#050505;border:1px solid rgba(250,204,21,0.15);border-radius:5px;padding:6px;text-align:center;"><div style="font-size:8px;color:#facc15;">Paneer Tikka</div><div style="font-size:9px;color:#555;margin-top:2px;">₹220</div></div>
+            <div style="background:#050505;border:1px solid rgba(250,204,21,0.15);border-radius:5px;padding:6px;text-align:center;"><div style="font-size:8px;color:#facc15;">Biryani</div><div style="font-size:9px;color:#555;margin-top:2px;">₹280</div></div>
+          </div>
+          <div style="background:#facc15;color:#000;padding:5px 14px;border-radius:50px;font-size:10px;font-weight:700;">Order on WhatsApp</div>
+        </div>
+      </div>
+      <div class="demo-info">
+        <div class="demo-type">Food & Restaurant</div>
+        <h3>Restaurant / Food Business</h3>
+        <p>Digital menu, gallery, WhatsApp ordering, reviews section. Best for dhabas, restaurants & tiffin services.</p>
+        <div class="demo-price">Starting at <span>₹3,500</span></div>
+      </div>
+    </div>
+    <div class="demo-card">
+      <div class="demo-preview demo-preview-3">
+        <div class="demo-thumb">
+          <div style="background:#facc15;height:3px;width:80%;border-radius:2px;"></div>
+          <div style="font-size:16px;font-weight:900;color:#f3f4f6;text-align:center;line-height:1.2;font-family:'Playfair Display',serif;">Gupta<br><span style="color:#facc15;">Hardware</span></div>
+          <div style="background:#050505;border:1px solid rgba(250,204,21,0.15);border-radius:6px;padding:8px;width:100%;">
+            <div style="display:flex;justify-content:space-between;font-size:8px;color:#6b7280;"><span>Pipes & Fittings</span><span style="color:#facc15;">In Stock</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:8px;color:#6b7280;margin-top:4px;"><span>Paints & Tools</span><span style="color:#facc15;">In Stock</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:8px;color:#6b7280;margin-top:4px;"><span>Electrical Items</span><span style="color:#facc15;">In Stock</span></div>
+          </div>
+          <div style="background:#facc15;color:#000;padding:5px 14px;border-radius:50px;font-size:10px;font-weight:700;">Get Quote</div>
+        </div>
+      </div>
+      <div class="demo-info">
+        <div class="demo-type">Retail / Shop</div>
+        <h3>Shop / Retail Business</h3>
+        <p>Product catalog, business hours, WhatsApp enquiry, Google Maps. Great for hardware, textile, or any local shop.</p>
+        <div class="demo-price">Starting at <span>₹3,000</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px;">
+    <p style="color:var(--muted);font-size:15px;margin-bottom:20px;">Want a website like these for your business?</p>
+    <a href="https://wa.me/918923092024?text=Hi WebNove, I want a website like the demo" class="btn-primary" target="_blank">💬 WhatsApp to Get Started</a>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Expertise</div>
+  <h2 class="section-title">My Skills</h2>
+  <p class="section-sub">Years of hands-on experience with Excel and web technologies.</p>
   <div class="skills-grid">
-    <div class="sk"><div class="sk-name">MS Excel — Advanced</div><div class="sk-track"><div class="sk-fill" style="width:96%"></div></div><div class="sk-pct">96%</div></div>
-    <div class="sk"><div class="sk-name">VLOOKUP & Formulas</div><div class="sk-track"><div class="sk-fill" style="width:94%"></div></div><div class="sk-pct">94%</div></div>
-    <div class="sk"><div class="sk-name">Pivot Tables</div><div class="sk-track"><div class="sk-fill" style="width:92%"></div></div><div class="sk-pct">92%</div></div>
-    <div class="sk"><div class="sk-name">Dashboard & Charts</div><div class="sk-track"><div class="sk-fill" style="width:90%"></div></div><div class="sk-pct">90%</div></div>
-    <div class="sk"><div class="sk-name">Website Development</div><div class="sk-track"><div class="sk-fill" style="width:85%"></div></div><div class="sk-pct">85%</div></div>
-    <div class="sk"><div class="sk-name">MIS Reporting</div><div class="sk-track"><div class="sk-fill" style="width:93%"></div></div><div class="sk-pct">93%</div></div>
-  </div>
-</div>
-
-<div class="process-wrap">
-  <p class="sec-label">How It Works</p>
-  <h2 class="sec-title">Simple 4-Step Process</h2>
-  <div class="steps">
-    <div class="step"><div class="step-num">01</div><div class="step-title">You Contact Me</div><div class="step-desc">WhatsApp or email me with your project details and requirements.</div></div>
-    <div class="step"><div class="step-num">02</div><div class="step-title">We Discuss</div><div class="step-desc">I understand your needs, timeline and give you a fair quote.</div></div>
-    <div class="step"><div class="step-num">03</div><div class="step-title">I Start Work</div><div class="step-desc">Work begins immediately. I keep you updated throughout.</div></div>
-    <div class="step"><div class="step-num">04</div><div class="step-title">You Get Delivery</div><div class="step-desc">Final work delivered on time. Revisions if needed. You're happy!</div></div>
-  </div>
-</div>
-
-<section id="contact">
-  <p class="sec-label">Let's Connect</p>
-  <h2 class="sec-title">Contact Me</h2>
-  <div class="contact-wrap">
-    <div class="contact-left">
-      <h3>Ready to start a project?<br>Let's talk!</h3>
-      <div class="ci">
-        <div class="ci-icon">📱</div>
-        <div><div class="ci-label">WhatsApp / Call</div><div class="ci-val">8923092024</div></div>
-      </div>
-      <div class="ci">
-        <div class="ci-icon">✉️</div>
-        <div><div class="ci-label">Email</div><div class="ci-val">alianas1778@gmail.com</div></div>
-      </div>
-      <div class="ci">
-        <div class="ci-icon">📍</div>
-        <div><div class="ci-label">Location</div><div class="ci-val">Moradabad, Uttar Pradesh</div></div>
-      </div>
-      <div class="ci">
-        <div class="ci-icon">🕐</div>
-        <div><div class="ci-label">Working Hours</div><div class="ci-val">Mon – Sat, 9 AM – 7 PM</div></div>
-      </div>
-    </div>
-    <div class="form-grid">
-      <input type="text" class="fi" placeholder="Your Name *">
-      <input type="tel" class="fi" placeholder="Your Phone Number *">
-      <input type="email" class="fi" placeholder="Your Email">
-      <select class="fi">
-        <option value="">Select Service Needed</option>
-        <option>Excel / MIS Report</option>
-        <option>Website Development</option>
-        <option>Data Entry</option>
-        <option>Landing Page</option>
-        <option>Other</option>
-      </select>
-      <textarea class="fi" placeholder="Describe your project briefly..."></textarea>
-      <button class="submit-btn" onclick="window.open('https://wa.me/918923092024','_blank')">Send via WhatsApp →</button>
-    </div>
+    <div class="skill-item"><div class="skill-icon">📊</div><div style="flex:1;"><div class="skill-name">MS Excel — Advanced</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:96%"></div></div></div><div class="skill-pct">96%</div></div>
+    <div class="skill-item"><div class="skill-icon">🔗</div><div style="flex:1;"><div class="skill-name">VLOOKUP & Formulas</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:94%"></div></div></div><div class="skill-pct">94%</div></div>
+    <div class="skill-item"><div class="skill-icon">📋</div><div style="flex:1;"><div class="skill-name">Pivot Tables</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:92%"></div></div></div><div class="skill-pct">92%</div></div>
+    <div class="skill-item"><div class="skill-icon">📈</div><div style="flex:1;"><div class="skill-name">Dashboard & Charts</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div></div><div class="skill-pct">90%</div></div>
+    <div class="skill-item"><div class="skill-icon">🌐</div><div style="flex:1;"><div class="skill-name">Website Development</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:85%"></div></div></div><div class="skill-pct">85%</div></div>
+    <div class="skill-item"><div class="skill-icon">📝</div><div style="flex:1;"><div class="skill-name">MIS Reporting</div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width:93%"></div></div></div><div class="skill-pct">93%</div></div>
   </div>
 </section>
 
-<a href="https://wa.me/918923092024" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">💬</a>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">Contact Me</h2>
+  <p class="section-sub">Ready to start a project? Reach out via WhatsApp or fill the form below.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item"><div class="contact-icon">📱</div><div class="contact-detail"><span>WhatsApp / Call</span><strong>8923092024</strong></div></div>
+      <div class="contact-item"><div class="contact-icon">✉️</div><div class="contact-detail"><span>Email</span><strong>aliamas1778@gmail.com</strong></div></div>
+      <div class="contact-item"><div class="contact-icon">📍</div><div class="contact-detail"><span>Location</span><strong>Mathura (MBD), Uttar Pradesh</strong></div></div>
+      <div class="contact-item"><div class="contact-icon">🕐</div><div class="contact-detail"><span>Working Hours</span><strong>Mon–Sat, 9 AM – 7 PM</strong></div></div>
+    </div>
+    <div class="contact-form">
+      <div class="form-group"><label>Your Name</label><input type="text" id="name" placeholder="e.g. Ramesh Sharma"></div>
+      <div class="form-group"><label>Service Needed</label><select id="service"><option value="">Select a Service</option><option>Excel / MIS Report</option><option>Website Development</option><option>Data Entry</option><option>Landing Page</option><option>Other</option></select></div>
+      <div class="form-group"><label>Message</label><textarea id="message" placeholder="Tell me about your project..."></textarea></div>
+      <button class="wa-btn" onclick="sendWA()">Send via WhatsApp →</button>
+    </div>
+  </div>
+</section>
 
 <footer>
-  Made with care &nbsp;✦&nbsp; <span>Webnove</span> &nbsp;✦&nbsp; Moradabad, UP &nbsp;✦&nbsp; Excel & Web Expert
+  <p>Made with care ✦ <strong>WebNove</strong> ✦ Mathura (MBD), UP ✦ Excel & Web Expert</p>
 </footer>
 
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/918923092024" class="wa-float" target="_blank">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+function showView(type, e) {
+  const desktop = document.getElementById('desktop-view');
+  const mobile = document.getElementById('mobile-view');
+  const wrapper = document.getElementById('device-wrapper');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  e.target.classList.add('active');
+  if (type === 'desktop') {
+    desktop.style.display = 'block'; mobile.style.display = 'none';
+    wrapper.style.flexDirection = 'row';
+  } else if (type === 'mobile') {
+    desktop.style.display = 'none'; mobile.style.display = 'block';
+    wrapper.style.flexDirection = 'column';
+  } else {
+    desktop.style.display = 'block'; mobile.style.display = 'block';
+    wrapper.style.flexDirection = 'row';
+  }
+}
+
+function sendWA() {
+  const name = document.getElementById('name').value || 'Someone';
+  const service = document.getElementById('service').value || 'a service';
+  const message = document.getElementById('message').value || '';
+  const text = `Hi WebNove! I am ${name} and I need help with ${service}. ${message}`;
+  window.open('https://wa.me/918923092024?text=' + encodeURIComponent(text), '_blank');
+}
+</script>
 </body>
 </html>
